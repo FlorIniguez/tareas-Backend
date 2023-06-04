@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('../routes/usuarioRoutes');
+const router = require('../routes/autosRoutes');
 const getHourMiddleware = require('../utils/getHourMiddleware.js');
 const server = express();
 
