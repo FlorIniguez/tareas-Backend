@@ -1,6 +1,6 @@
-import  { Response,Request } from 'express';
 import server from './server'
-require ('dotenv').config;
+import dotenv  from "dotenv";
+dotenv.config()
 import './config'
 
 const PORT = 8080;
@@ -8,4 +8,5 @@ const PORT = 8080;
 
 server.listen(PORT,()=>{
     console.log(`Server listening on ${PORT}`);
+    console.log(` Document in http://localhost:${PORT}/swagger`)
 })
