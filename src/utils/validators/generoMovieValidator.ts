@@ -3,7 +3,9 @@ import { param} from "express-validator";
 import { ValidateResult } from "./validateHelper";
 
 export const generoValidator = [
-  param('genero', 'El gènero  es requerido').notEmpty(),
+  param('genero')
+  .notEmpty()
+  .withMessage('genero requerido para realizar esta acción'),
   (req: Request, res: Response, next: NextFunction) =>{
     ValidateResult(req,res,next)
 }

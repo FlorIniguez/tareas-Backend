@@ -31,9 +31,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/userRegisterResponse"
-          headers:
-            auth-token:
-              $ref: "#/components/headers/AuthTokenHeader"
+          # headers:
+          #   auth-token:
+          #     $ref: "#/components/headers/auth-token"
+            headers:
+              auth-token:
+                description: Token de autenticación
+              schema:
+                type: string
 
   /user/login:
     post:
@@ -52,9 +57,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/userLoginResponse"
-          headers:
-            auth-token:
-              $ref: "#/components/headers/AuthTokenHeader"
+          # headers:
+          #   auth-token:
+          #     $ref: "#/components/headers/auth-token"
+            headers:
+              auth-token:
+                description: Token de autenticación
+              schema:
+                type: string
 
   /movies/listado :
     get:
@@ -118,7 +128,7 @@ paths:
       description: Operacion disponible para usuarios que hayan iniciado sesion. 
        Esta ruta permite editar una película por medio del id.
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         content:
           application/json:
@@ -126,12 +136,6 @@ paths:
               $ref: "#/components/schemas/postMovie"
       parameters:
         - $ref: '#/components/parameters/id'
-        # - name: id
-        #   in: path
-        #   description: Id de la pelicula
-        #   required: true
-          # schema:
-          #  type: string
       responses:
         200:
           description: OK
@@ -148,12 +152,13 @@ paths:
 
   /movies/eliminar/{id}:
      delete: 
-       security:
-        - bearerAuth: []
+
        tags:
         - movies
        description: Operacion disponible solo para usuarios logueados.
         Esta ruta elimina una pelicula por ID de  la base de datos.
+       security:
+       - bearerAuth: []
        parameters:
         - $ref: '#/components/parameters/id'
         # - name: id
@@ -175,21 +180,26 @@ paths:
            application/json:
               schema:
                   $ref: '#/components/schemas/badRequestInvalidId'
+        cookieAuth: 
+         type: apiKey
+         in: cookie
+         name: token
 
 
 components:
   headers:
-    AuthTokenHeader:
+    Authorization:
       description: Token de autenticación
       schema:
         type: string
-      example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."      
+      example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
   
   securitySchemes:
     bearerAuth: 
       type: http
       scheme: bearer
       bearerFormat: JWT
+
 
   schemas:
    

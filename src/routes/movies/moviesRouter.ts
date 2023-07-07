@@ -7,14 +7,15 @@ import { IDValidator } from "../../utils/validators/idValidator";
 import { validateCreate } from "../../utils/validators/moviesValidator";
 import { getMovieGeneroController} from "../../controllers/movies/getMovieController";
 import { generoValidator } from "../../utils/validators/generoMovieValidator";
-import  { authValidation }from "../../utils/middlewares/validateToken";
+import { authMiddleware } from "../../utils/middlewares/validateToken";
+
 
 const router = express.Router();
 
 router.get('/listado', getAllMoviesController)
 router.get('/buscar/:genero',generoValidator, getMovieGeneroController)
 router.post('/crear', validateCreate ,addMovieController);
-router.delete('/eliminar/:id', IDValidator,  authValidation, deleteMovieController);
-router.put('/editar/:id', IDValidator,  authValidation ,updateMovieController)
+router.delete('/eliminar/:id', IDValidator,  authMiddleware, deleteMovieController);
+router.put('/editar/:id', IDValidator,  authMiddleware ,updateMovieController)
 
 module.exports = router;

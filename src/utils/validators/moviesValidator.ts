@@ -8,7 +8,7 @@ check('titulo')
 .isString()
 .exists()
 .notEmpty()
-.withMessage("El titulo es obligatorio"),
+.withMessage("El título es requerido"),
 
 check("genero")
 //isIn de Express Validator para asegurarse de que el valor proporcionado para el campo genero se encuentre en los valores permitidos definidos en el enum Genero. Si el valor no está en 
@@ -25,7 +25,7 @@ check('sinopsis')
 .isString()
 .exists()
 .notEmpty()
-.withMessage("Sinopsis es un campo obligatorio"),
+.withMessage("Sinopsis es un campo requerido"),
 
 (req: Request, res: Response, next: NextFunction) =>{
     ValidateResult(req,res,next)

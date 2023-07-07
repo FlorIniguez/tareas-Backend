@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+import bcrypt from 'bcrypt';
 import { Request, Response } from "express";
 import User, { IUser} from "../../models/User";
 import { generateJWT } from "../../utils/middlewares/generateToken";

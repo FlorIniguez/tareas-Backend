@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 
 //interfaace
 export interface IUser extends Document {
+  id: string;
   username: string;
   password: string;
   email: string;

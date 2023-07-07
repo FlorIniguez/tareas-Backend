@@ -3,7 +3,7 @@ import { param } from 'express-validator';
 import { ValidateResult } from './validateHelper';
 
 export const IDValidator = [
-    param('id').notEmpty().withMessage('ID requerido, escribir por parametro'),
+    param('id').notEmpty().withMessage('ID requerido para realizar esta acción'),
 
   
      (req: Request, res: Response, next: NextFunction) =>{
